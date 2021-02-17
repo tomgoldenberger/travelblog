@@ -1,8 +1,8 @@
-<!-- somewhere here is a bug, i think it might be the blog -->
 
-<div *ngIf="blog">
-    <h2>{{blog.title}} Details</h2>
-    <h3>crazy</h3>
-    <div><span>id:</span>{{blog.id}}</div>
+<ng-container *ngIf="blog">
+    <h2>{{blog.title}} - {{blog.date}}</h2>
+    <h2>{{blog.destination}}</h2>
+    <h3>{{blog.description}}</h3>
+    <h5>{{blog.content}}</h5>
     <button (click)="goBack()">go back</button>
-</div>
+</ng-container>

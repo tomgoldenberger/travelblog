@@ -11,18 +11,18 @@ import { Location } from '@angular/common';
 })
 export class BlogComponent implements OnInit {
 
-  blog: Blogentry;
+  public blog: Blogentry;
 
   constructor(
     private contentService: ContentService,
     private route: ActivatedRoute,
     private location: Location
-    ) { 
-      // this.ngOnInit();
+    ) {
+      
     }
 
   ngOnInit(): void {
-    this.getBlogentry;
+    this.getBlogentry();
   }
 
   getBlogentry(): void{
