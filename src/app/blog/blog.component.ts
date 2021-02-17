@@ -7,27 +7,26 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.css']
+  styleUrls: ['./blog.component.css'],
 })
 export class BlogComponent implements OnInit {
-
   public blog: Blogentry;
 
   constructor(
     private contentService: ContentService,
     private route: ActivatedRoute,
     private location: Location
-    ) {
-      
-    }
+  ) {}
 
   ngOnInit(): void {
     this.getBlogentry();
   }
 
-  getBlogentry(): void{
+  getBlogentry(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.contentService.getBlogentry(id).subscribe(blog => this.blog = blog);
+    this.contentService
+      .getBlogentry(id)
+      .subscribe((blog) => (this.blog = blog));
   }
 
   goBack(): void {

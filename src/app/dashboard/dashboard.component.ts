@@ -5,24 +5,25 @@ import { ContentService } from '../content.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   blogs?: Blogentry[];
 
-  constructor(private contentService: ContentService) { }
+  constructor(private contentService: ContentService) {}
 
   ngOnInit(): void {
     this.getBlogs();
   }
 
   getBlogs(): void {
-    this.contentService.getBlogentrys()
-    .subscribe(blogs => this.blogs = blogs);
+    this.contentService
+      .getBlogentrys()
+      .subscribe((blogs) => (this.blogs = blogs));
   }
 
   // TODO add new Blogpost!
-  
+
   // add(name: string): void {
   //   name = name.trim();
   //   if (!name) { return; }
@@ -38,5 +39,4 @@ export class DashboardComponent implements OnInit {
   //   this.blogs = this.blogs.filter(h => h !== blogentry);
   //   this.contentService.deleteBlogentry(blogentry).subscribe();
   // }
-
 }

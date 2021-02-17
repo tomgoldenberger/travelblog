@@ -1,13 +1,17 @@
-
 <div>
-    <li *ngFor = "let blogentry of blogs">
-        <a routerLink = "/blog/{{blogentry.id}}">
-            <div>
-                <h2>{{blogentry.title}}</h2>
-                <h3>{{blogentry.destination}}</h3>
-                <h4>{{blogentry.description}}</h4>
-
-            </div>
-        </a>
-    </li>
+  <div class="container">
+    <div class="row row.cols-4">
+      <div *ngFor="let blogentry of blogs" class="col">
+        <div class="card col-sm" style="width: 18rem">
+          <div class="card-body hover" routerLink="/blog/{{ blogentry.id }}">
+            <h5 class="card-title">{{ blogentry.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ blogentry.destination }}
+            </h6>
+            <p class="card-text">{{ blogentry.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
