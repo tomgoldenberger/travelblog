@@ -5,3 +5,11 @@
     padding: 0px 15px 0;
     
   }
+.size{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 3rem;
+}
