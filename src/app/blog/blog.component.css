@@ -5,3 +5,6 @@
 .text-center{
     font-size: medium;
 }
+#size{
+     min-height:83vh;
+}

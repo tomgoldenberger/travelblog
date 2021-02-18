@@ -4,3 +4,6 @@
 .hover:hover{
     cursor: pointer;
 }
+.size{
+    min-height: 85vh;
+}
