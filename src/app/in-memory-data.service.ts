@@ -17,15 +17,45 @@ export class InMemoryDataService implements InMemoryDbService {
         destination: 'Australia',
         description: 'A City to find love!',
         date: '12.12.2020',
-        content: this.mockContentdreator('wöjebvwjenvwnek'),
+        content:
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,' +
+          'sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ' +
+          'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.' +
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ' +
+          'ipsum dolor sit amet.' +
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,' +
+          'sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ' +
+          'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.' +
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ' +
+          'ipsum dolor sit amet.' +
+          'ipsum dolor sit amet.' +
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,' +
+          'sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ' +
+          'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.' +
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ' +
+          'ipsum dolor sit amet.',
       },
       {
         id: 2,
         title: 'Roundtrip',
         destination: 'Germany',
-        description: 'Great tour with children!',
+        description:
+          'Great tour with children! Next time we will hopefully see some crazy rocks! Dont do this with a doog',
         date: '13.12.2020',
-        content: this.mockContentdreator('wöjebvwjenvwnek'),
+        content:
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,' +
+          'sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ' +
+          'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.' +
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ' +
+          'ipsum dolor sit amet.',
       },
       {
         id: 3,
@@ -33,7 +63,14 @@ export class InMemoryDataService implements InMemoryDbService {
         destination: 'Russia',
         description: 'Place to be!',
         date: '14.12.2020',
-        content: this.mockContentdreator('wöjebvwjenvwnek'),
+        content:
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,' +
+          'sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ' +
+          'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.' +
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ' +
+          'ipsum dolor sit amet.',
       },
       {
         id: 4,
@@ -41,7 +78,14 @@ export class InMemoryDataService implements InMemoryDbService {
         destination: 'Arabia',
         description: 'Nobody was here before!',
         date: '15.12.2020',
-        content: this.mockContentdreator('wöjebvwjenvwnek'),
+        content:
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,' +
+          'sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ' +
+          'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.' +
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ' +
+          'ipsum dolor sit amet.',
       },
       {
         id: 5,
@@ -49,7 +93,14 @@ export class InMemoryDataService implements InMemoryDbService {
         destination: 'Kenya',
         description: 'People are crazy!',
         date: '16.12.2020',
-        content: this.mockContentdreator('wöjebvwjenvwnek'),
+        content:
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,' +
+          'sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ' +
+          'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.' +
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ' +
+          'ipsum dolor sit amet.',
       },
       {
         id: 6,
@@ -57,17 +108,33 @@ export class InMemoryDataService implements InMemoryDbService {
         destination: 'Mexico',
         description: 'Water is cold!',
         date: '17.12.2020',
-        content: this.mockContentdreator('wöjebvwjenvwnek'),
+        content:
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,' +
+          'sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ' +
+          'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.' +
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ' +
+          'ipsum dolor sit amet.',
+      },
+      {
+        id: 7,
+        title: 'Wellness',
+        destination: 'Schweiz',
+        description:
+          'Relax all day long with a beautiful view wonderful to be alive!',
+        date: '18.12.2020',
+        content:
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,' +
+          'sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ' +
+          'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.' +
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,' +
+          'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ' +
+          'ipsum dolor sit amet.',
+        picture: '/assets/bspBild.jpg',
       },
     ];
     return { entry };
-  }
-
-  mockContentdreator(text: string): string {
-    let mockText = text;
-    for (let i = 0; i < 100; i++) {
-      mockText += text + 'whatsup';
-    }
-    return mockText;
   }
 }

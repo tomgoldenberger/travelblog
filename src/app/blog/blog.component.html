@@ -1,7 +1,31 @@
 <ng-container *ngIf="blog">
-  <h2>{{ blog.title }} - {{ blog.date }}</h2>
-  <h2>{{ blog.destination }}</h2>
-  <h3>{{ blog.description }}</h3>
-  <h5>{{ blog.content }}</h5>
-  <button (click)="goBack()">go back</button>
+  <div class="container marketing">
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider" />
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">
+          {{ blog.title }}
+          <span class="text-muted">{{ blog.date }}</span>
+          <span class="text-center">{{ blog.destination }}</span>
+        </h2>
+        <p class="lead">
+          {{ blog.content }}
+        </p>
+      </div>
+      <div class="col-md-5">
+        <img
+          src="{{ blog.picture }}"
+          alt="UserBild"
+          style="width: 500px; height: auto"
+        />
+      </div>
+    </div>
+
+    <hr class="featurette-divider" />
+
+    <!-- /END THE FEATURETTES -->
+  </div>
 </ng-container>
