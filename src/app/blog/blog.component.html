@@ -15,7 +15,7 @@
           {{ blog.content }}
         </p>
       </div>
-      <div class="col-md-5">
+      <div *ngIf="blog.picture" class="col-md-5">
         <img
           src="{{ blog.picture }}"
           alt="UserBild"

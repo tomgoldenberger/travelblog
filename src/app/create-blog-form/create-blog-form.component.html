@@ -1,0 +1,68 @@
+<form class="size container" [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col">
+      <label for="exampleFormControlTextarea1" class="form-label">Title</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        aria-label="Title"
+        formControlName="title"
+      />
+    </div>
+    <div *ngIf="submitted && blogForm.controls.title.errors">
+      <div *ngIf="blogForm.controls.title.errors.required">
+        Title is required!
+      </div>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlTextarea1" class="form-label">Date</label>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Date"
+        formControlName="date"
+        placeholder="dd.mm.yyyy"
+        maxlength="10"
+        min="10"
+      />
+    </div>
+    <div class="col">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Destination</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Destination"
+        formControlName="destination"
+      />
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"
+      >Description</label
+    >
+    <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+      formControlName="description"
+      maxlength="110"
+    ></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Blogtext</label>
+    <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="10"
+      formControlName="blogText"
+    ></textarea>
+  </div>
+  <button class="btn btn-primary" [disabled]="!blogForm.valid" type="submit">
+    save Blog
+  </button>
+
+  <!-- <p>Form Status: {{ blogForm.status }}</p> -->
+</form>

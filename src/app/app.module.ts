@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { CreateBlogFormComponent } from './create-blog-form/create-blog-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,16 +19,19 @@ import { FooterComponent } from './footer/footer.component';
     BlogComponent,
     DashboardComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CreateBlogFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      dataEncapsulation: false,
+    }),
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
