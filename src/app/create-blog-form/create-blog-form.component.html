@@ -10,21 +10,24 @@
         formControlName="title"
       />
     </div>
-    <div *ngIf="submitted && blogForm.controls.title.errors">
+    <!-- not necessary anymore because the save button is disabled if not all fields
+    are used! -->
+
+    <!-- <div
+      *ngIf="submitted && blogForm.controls.title.errors"
+      class="invalid-feedback"
+    >
       <div *ngIf="blogForm.controls.title.errors.required">
         Title is required!
       </div>
-    </div>
+    </div> -->
     <div class="col">
       <label for="exampleFormControlTextarea1" class="form-label">Date</label>
       <input
-        type="text"
+        type="date"
         class="form-control"
         aria-label="Date"
         formControlName="date"
-        placeholder="dd.mm.yyyy"
-        maxlength="10"
-        min="10"
       />
     </div>
     <div class="col">
@@ -56,13 +59,11 @@
     <textarea
       class="form-control"
       id="exampleFormControlTextarea1"
-      rows="10"
+      rows="15"
       formControlName="blogText"
     ></textarea>
   </div>
   <button class="btn btn-primary" [disabled]="!blogForm.valid" type="submit">
     save Blog
   </button>
-
-  <!-- <p>Form Status: {{ blogForm.status }}</p> -->
 </form>

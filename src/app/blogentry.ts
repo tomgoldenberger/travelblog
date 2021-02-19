@@ -3,7 +3,7 @@ export interface Blogentry {
   title: string;
   destination: string;
   description: string;
-  date: string;
+  date: Date;
   content: string;
   picture: string;
 }
