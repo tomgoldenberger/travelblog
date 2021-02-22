@@ -137,4 +137,14 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
     return { entry };
   }
+  // Overrides the genId method to ensure that a Blogentry always has an id.
+  // If the Blogentry array is empty,
+  // the method below returns the initial number (11).
+  // if the heroes array is not empty, the method below returns the highest
+  // Blogentry id + 1.
+  genId(blogentrys: Blogentry[]): number {
+    return blogentrys.length > 0
+      ? Math.max(...blogentrys.map((blog) => blog.id)) + 1
+      : 10;
+  }
 }

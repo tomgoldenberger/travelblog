@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Blogentry } from '../blogentry';
+import { ContentService } from '../content.service';
 
 @Component({
   selector: 'app-create-blog-form',
@@ -14,7 +11,13 @@ import {
 export class CreateBlogFormComponent implements OnInit {
   blogForm: FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder) {}
+  blog: Blogentry;
+  blogs: Blogentry[];
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private contentService: ContentService
+  ) {}
 
   ngOnInit(): void {
     this.blogForm = this.formBuilder.group({
@@ -22,14 +25,21 @@ export class CreateBlogFormComponent implements OnInit {
       date: ['', Validators.required],
       destination: ['', Validators.required],
       description: ['', Validators.required],
-      blogText: ['', Validators.required],
+      content: ['', Validators.required],
     });
   }
 
   onSubmit(): void {
     this.submitted = true;
-    console.log(this.blogForm.value);
+    this.blog = this.blogForm.value;
+    if (!this.blog) {
+      return;
+    }
+    this.contentService.addBlogentry(this.blog).subscribe();
+    console.log(this.blog);
+    this.onReset();
   }
+
   onReset(): void {
     this.submitted = false;
   }

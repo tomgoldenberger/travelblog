@@ -60,9 +60,10 @@
       class="form-control"
       id="exampleFormControlTextarea1"
       rows="15"
-      formControlName="blogText"
+      formControlName="content"
     ></textarea>
   </div>
+  <!-- If not all the forms are filled then the Save Button is disabled!-->
   <button class="btn btn-primary" [disabled]="!blogForm.valid" type="submit">
     save Blog
   </button>
