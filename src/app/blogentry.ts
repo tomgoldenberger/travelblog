@@ -5,5 +5,5 @@ export interface Blogentry {
   description: string;
   date: Date;
   content: string;
-  picture: string;
+  picture: File;
 }
