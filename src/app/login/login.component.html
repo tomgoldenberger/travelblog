@@ -1,0 +1,30 @@
+<form class="size container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <div class="col">
+      <label for="exampleFormControlTextarea1" class="form-label">username</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        aria-label="username"
+        formControlName="username"
+      />
+    </div>
+    <div class="col">
+      <label for="exampleFormControlTextarea1" class="form-label">passwort</label>
+      <input
+        type="password"
+        class="form-control"
+        aria-label="passwort"
+        formControlName="passwort"
+      />
+    </div>
+
+    <label></label>
+    <!-- If not all the forms are filled then the Save Button is disabled!-->
+    <div class="col">
+        <button class="btn btn-primary" [disabled]="!loginForm.valid" type="submit">
+        login
+        </button>
+    </div>
+</form>    

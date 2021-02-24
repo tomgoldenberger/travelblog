@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { CreateBlogFormComponent } from './create-blog-form/create-blog-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     FooterComponent,
     CreateBlogFormComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
