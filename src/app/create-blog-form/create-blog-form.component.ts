@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Blogentry } from '../blogentry';
 import { ContentService } from '../content.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-blog-form',
@@ -13,10 +14,12 @@ export class CreateBlogFormComponent implements OnInit {
   submitted = false;
   blog: Blogentry;
   blogs: Blogentry[];
+  // selectedFile = null; // For picture upload
 
   constructor(
     private formBuilder: FormBuilder,
-    private contentService: ContentService
+    private contentService: ContentService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -26,6 +29,7 @@ export class CreateBlogFormComponent implements OnInit {
       destination: ['', Validators.required],
       description: ['', Validators.required],
       content: ['', Validators.required],
+      picture: [''],
     });
   }
 
@@ -42,5 +46,15 @@ export class CreateBlogFormComponent implements OnInit {
 
   onReset(): void {
     this.submitted = false;
+    this.goBack();
   }
+
+  goBack(): void {
+    this.location.back();
+  }
+  /** TODO for picture upload */
+  // onFileSelected(event) {
+  //   this.blog = this.blogForm.value;
+  //   this.blog.picture = event.target.files[0];
+  // }
 }

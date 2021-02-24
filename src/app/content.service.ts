@@ -73,6 +73,16 @@ export class ContentService {
         catchError(this.handleError<Blogentry>('addblogentry'))
       );
   }
+  /** TODO if we want to enable the upload for pictures! */
+  /** POST: add a picture to the server */
+  // addPicture(blogentry: Blogentry): Observable<Blogentry> {
+  //   return this.http
+  //     .post<Blogentry>(this.contentUrl, blogentry, this.httpOptions)
+  //     .pipe(
+  //       tap((newblogentry: Blogentry) => console.log('new Picture is added!')),
+  //       catchError(this.handleError<Blogentry>('addblogentry'))
+  //     );
+  // }
 
   /** DELETE: delete the blogentry from the server */
   deleteBlogentry(blogentry: Blogentry | number): Observable<Blogentry> {

@@ -1,4 +1,4 @@
-<form class="size container" [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+<form class="size container" [formGroup]="blogForm">
   <div class="row">
     <div class="col">
       <label for="exampleFormControlTextarea1" class="form-label">Title</label>
@@ -63,8 +63,19 @@
       formControlName="content"
     ></textarea>
   </div>
+  <!-- to add a picture to the blogpost currently not working! maybe later i'll change that! -->
+  <!-- <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Picture</label>
+    <input class="form-control" type="file" (change)="onFileSelected($event)" />
+  </div> -->
+
   <!-- If not all the forms are filled then the Save Button is disabled!-->
-  <button class="btn btn-primary" [disabled]="!blogForm.valid" type="submit">
-    save Blog
+  <button
+    class="btn btn-primary"
+    [disabled]="!blogForm.valid"
+    (click)="onSubmit()"
+  >
+    save
   </button>
+  <button class="btn btn-primary distance" (click)="goBack()">back</button>
 </form>
