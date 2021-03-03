@@ -16,9 +16,15 @@ export class DashboardComponent implements OnInit {
     this.getBlogs();
   }
 
+  // getBlogs(): void {
+  //   this.contentService
+  //     .getBlogentrys()
+  //     .subscribe((blogs) => (this.blogs = blogs));
+  // }
+
   getBlogs(): void {
     this.contentService
-      .getBlogentrys()
+      .getBlogentrysfromServer()
       .subscribe((blogs) => (this.blogs = blogs));
   }
 }

@@ -47,17 +47,13 @@ export class ContentService {
     };
   }
 
-  /** PUT: update the blog on the server */
-  updateBlogentry(blogentry: Blogentry): Observable<any> {
-    return this.http.put(this.serverUrl, blogentry, this.httpOptions).pipe(
-      tap((_) => console.log('Blogentry updated!')),
-      catchError(this.handleError<any>('updateBlogentry'))
-    );
-  }
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
+  // /** PUT: update the blog on the server */
+  // updateBlogentry(blogentry: Blogentry): Observable<any> {
+  //   return this.http.put(this.serverUrl, blogentry, this.httpOptions).pipe(
+  //     tap((_) => console.log('Blogentry updated!')),
+  //     catchError(this.handleError<any>('updateBlogentry'))
+  //   );
+  // }
 
   /** POST: add a new blogentry to the server */
   addBlogentry(blogentry: Blogentry): Observable<Blogentry> {
@@ -90,4 +86,8 @@ export class ContentService {
       catchError(this.handleError<Blogentry[]>('getBlogentrys', []))
     );
   }
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 }

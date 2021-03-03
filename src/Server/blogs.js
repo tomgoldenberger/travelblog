@@ -36,19 +36,6 @@ server.post('/blogs', (req, res) => {
     console.log(blogs.title);
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 server.listen(4444, () => {
     console.log('a server with express is running on port 4444');
 });
