@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -20,6 +22,10 @@ export class LoginComponent implements OnInit {
       passwort: ['', Validators.required],
 
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
   onSubmit(): void {
