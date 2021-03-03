@@ -8,23 +8,23 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ContentService {
-  private contentUrl = 'api/entry';
+  private serverUrl = 'http://localhost:4444/blogs';
 
   constructor(private http: HttpClient) {}
 
   /** GET all Blogs from the server */
   getBlogentrys(): Observable<Blogentry[]> {
-    return this.http.get<Blogentry[]>(this.contentUrl).pipe(
-      tap((_) => console.log('fetched Blogentrys')), //this.log('fetched Blogentrys')),
+    return this.http.get<Blogentry[]>(this.serverUrl).pipe(
+      tap((_) => console.log('fetched Blogentrys')),
       catchError(this.handleError<Blogentry[]>('getBlogentrys', []))
     );
   }
 
   /** GET Blog by id. Will 404 if id not found */
   getBlogentry(id: number): Observable<Blogentry> {
-    const url = `${this.contentUrl}/${id}`;
+    const url = `${this.serverUrl}/${id}`;
     return this.http.get<Blogentry>(url).pipe(
-      tap((_) => console.log('fetched blogentry id=${id}')), //this.log(`fetched blogentry id=${id}`)),
+      tap((_) => console.log('fetched blogentry id=${id}')),
       catchError(this.handleError<Blogentry>(`getBlogentry id=${id}`))
     );
   }
@@ -41,7 +41,6 @@ export class ContentService {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      // this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
@@ -50,9 +49,8 @@ export class ContentService {
 
   /** PUT: update the blog on the server */
   updateBlogentry(blogentry: Blogentry): Observable<any> {
-    return this.http.put(this.contentUrl, blogentry, this.httpOptions).pipe(
+    return this.http.put(this.serverUrl, blogentry, this.httpOptions).pipe(
       tap((_) => console.log('Blogentry updated!')),
-      // this.log(`updated blogentry id=${blogentry.id}`)),
       catchError(this.handleError<any>('updateBlogentry'))
     );
   }
@@ -64,50 +62,32 @@ export class ContentService {
   /** POST: add a new blogentry to the server */
   addBlogentry(blogentry: Blogentry): Observable<Blogentry> {
     return this.http
-      .post<Blogentry>(this.contentUrl, blogentry, this.httpOptions)
+      .post<Blogentry>(this.serverUrl, blogentry, this.httpOptions)
       .pipe(
         tap((newblogentry: Blogentry) =>
           console.log('new Blogentry is added!')
         ),
-        // this.log(`added blogentry w/ id=${blogentry.id}`)),
         catchError(this.handleError<Blogentry>('addblogentry'))
       );
   }
-  /** TODO if we want to enable the upload for pictures! */
-  /** POST: add a picture to the server */
-  // addPicture(blogentry: Blogentry): Observable<Blogentry> {
-  //   return this.http
-  //     .post<Blogentry>(this.contentUrl, blogentry, this.httpOptions)
-  //     .pipe(
-  //       tap((newblogentry: Blogentry) => console.log('new Picture is added!')),
-  //       catchError(this.handleError<Blogentry>('addblogentry'))
-  //     );
-  // }
-
+  /** NOT being used at the moment! */
   /** DELETE: delete the blogentry from the server */
   deleteBlogentry(blogentry: Blogentry | number): Observable<Blogentry> {
     const id = typeof blogentry === 'number' ? blogentry : blogentry.id;
-    const url = `${this.contentUrl}/${id}`;
+    const url = `${this.serverUrl}/${id}`;
 
     return this.http.delete<Blogentry>(url, this.httpOptions).pipe(
       tap((_) => console.log(' Blogentry is deleted!')),
-      // this.log(`deleted blogentry id=${id}`)),
       catchError(this.handleError<Blogentry>('deleteblogentry'))
     );
   }
 
-  // is not being used! maybe for future projects!
-  /* GET blogentryes whose name contains search term */
-  searchBlogentry(term: string): Observable<Blogentry[]> {
-    if (!term.trim()) {
-      // if not search term, return empty blogentry array.
-      return of([]);
-    }
-    return this.http.get<Blogentry[]>(`${this.contentUrl}/?name=${term}`).pipe(
-      // tap(x => x.length ?
-      //    this.log(`found heroes matching "${term}"`) :
-      //    this.log(`no heroes matching "${term}"`)),
-      catchError(this.handleError<Blogentry[]>('searchHeroes', []))
+  /** GET all Blogs from the server */
+  getBlogentrysfromServer(): any {
+    console.log('display blogs!');
+    return this.http.get(`${this.serverUrl}`).pipe(
+      tap((_) => console.log('fetched Blogentrys')),
+      catchError(this.handleError<Blogentry[]>('getBlogentrys', []))
     );
   }
 }

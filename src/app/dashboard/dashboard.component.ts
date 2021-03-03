@@ -21,22 +21,4 @@ export class DashboardComponent implements OnInit {
       .getBlogentrys()
       .subscribe((blogs) => (this.blogs = blogs));
   }
-
-  // TODO add new Blogpost!
-
-  // add(name: string): void {
-  //   name = name.trim();
-  //   if (!name) { return; }
-  //   this.contentService.addBlogentry({ title } as Blogentry)
-  //     .subscribe(blogentry => {
-  //       this.blogs.push(blogentry);
-  //     });
-  // }
-
-  // TODO delete a Blogpost!
-
-  // delete(blogentry: Blogentry): void {
-  //   this.blogs = this.blogs.filter(h => h !== blogentry);
-  //   this.contentService.deleteBlogentry(blogentry).subscribe();
-  // }
 }

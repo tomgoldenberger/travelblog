@@ -1,4 +1,4 @@
-export interface Blogentry {
+export class Blogentry {
   id: number;
   title: string;
   destination: string;
