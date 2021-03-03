@@ -24,7 +24,7 @@
     <!-- If not all the forms are filled then the Save Button is disabled!-->
 
       <div class="col">
-        <button class="btn btn-primary" [disabled]="!loginForm.valid" type="submit">login</button>
+        <button class="btn btn-primary" [disabled]="!loginForm.valid" (click)="onSubmit()">login</button>
         <button class="btn btn-primary distance" (click)="goBack()">back</button>
       </div>
-</form>    
+</form>      

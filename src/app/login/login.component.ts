@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 import { Location } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { AuthenticateService } from '../authenticate.service';
+import { ContentService } from '../content.service';
+
 
 @Component({
   selector: 'app-login',
@@ -13,14 +17,17 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private location: Location
+    private location: Location,
+    private contentService: ContentService,
+    private authenticateservice: AuthenticateService,
+    private httpModule: HttpClientModule,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       passwort: ['', Validators.required],
-
     });
   }
 
@@ -29,6 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-
-  }
+    this.authenticateservice.login()
+  }          
 }
