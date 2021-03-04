@@ -1,5 +1,5 @@
 export class Blogentry {
-  id: number;
+  id: string;
   title: string;
   destination: string;
   description: string;

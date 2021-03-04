@@ -21,10 +21,10 @@ export class ContentService {
   }
 
   /** GET Blog by id. Will 404 if id not found */
-  getBlogentry(id: number): Observable<Blogentry> {
+  getBlogentry(id: string): Observable<Blogentry> {
     const url = `${this.serverUrl}/${id}`;
     return this.http.get<Blogentry>(url).pipe(
-      tap((_) => console.log('fetched blogentry id=${id}')),
+      tap((_) => console.log(`fetched Blogentry id=${id}`)),
       catchError(this.handleError<Blogentry>(`getBlogentry id=${id}`))
     );
   }
@@ -37,23 +37,11 @@ export class ContentService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-
+      console.error(error);
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
-
-  // /** PUT: update the blog on the server */
-  // updateBlogentry(blogentry: Blogentry): Observable<any> {
-  //   return this.http.put(this.serverUrl, blogentry, this.httpOptions).pipe(
-  //     tap((_) => console.log('Blogentry updated!')),
-  //     catchError(this.handleError<any>('updateBlogentry'))
-  //   );
-  // }
 
   /** POST: add a new blogentry to the server */
   addBlogentry(blogentry: Blogentry): Observable<Blogentry> {
@@ -75,15 +63,6 @@ export class ContentService {
     return this.http.delete<Blogentry>(url, this.httpOptions).pipe(
       tap((_) => console.log(' Blogentry is deleted!')),
       catchError(this.handleError<Blogentry>('deleteblogentry'))
-    );
-  }
-
-  /** GET all Blogs from the server */
-  getBlogentrysfromServer(): any {
-    console.log('display blogs!');
-    return this.http.get(`${this.serverUrl}`).pipe(
-      tap((_) => console.log('fetched Blogentrys')),
-      catchError(this.handleError<Blogentry[]>('getBlogentrys', []))
     );
   }
 

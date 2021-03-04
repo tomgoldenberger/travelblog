@@ -11,21 +11,23 @@ import { Location } from '@angular/common';
 })
 export class BlogComponent implements OnInit {
   public blog: Blogentry;
+  public uid: string;
 
   constructor(
     private contentService: ContentService,
     private route: ActivatedRoute,
     private location: Location
-  ) {}
+  ) {
+    this.uid = route.snapshot.params.id;
+  }
 
   ngOnInit(): void {
     this.getBlogentry();
   }
 
   getBlogentry(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
     this.contentService
-      .getBlogentry(id)
+      .getBlogentry(this.uid)
       .subscribe((blog) => (this.blog = blog));
   }
 
