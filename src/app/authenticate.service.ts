@@ -11,16 +11,7 @@ export class AuthenticateService {
 
   constructor(private http: HttpClient) { }
 
-  lfdsogin(){
-    window.alert("yeet");
-    this.http.get('http://localhost:8000/login')
+  login(username:string, password:string){
+    return this.http.post('http://localhost:8000/login', { username: "username", password: "password" })
   }
-  login() {
-    return this.http.get('http://localhost:8000').pipe(
-      tap((_) => console.log('info')),
-      
-    );
-  
-  }
-
 }
