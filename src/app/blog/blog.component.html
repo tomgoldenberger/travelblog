@@ -5,23 +5,14 @@
     <hr class="featurette-divider" />
 
     <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">
-          {{ blog.title }}
-          <span class="text-muted">{{ blog.date }}</span>
-          <span class="text-center">{{ blog.destination }}</span>
-        </h2>
-        <p class="lead">
-          {{ blog.content }}
-        </p>
-      </div>
-      <div *ngIf="blog.picture" class="col-md-5">
-        <img
-          src="{{ blog.picture }}"
-          alt="UserBild"
-          style="width: 500px; height: auto"
-        />
-      </div>
+      <h2 class="featurette-heading">
+        {{ blog.title }}
+        <span class="text-muted">{{ blog.date }}</span>
+        <span class="text-center">{{ blog.destination }}</span>
+      </h2>
+      <p class="lead">
+        {{ blog.content }}
+      </p>
     </div>
 
     <hr class="featurette-divider" />

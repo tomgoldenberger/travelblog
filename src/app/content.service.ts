@@ -56,15 +56,14 @@ export class ContentService {
   }
   /** NOT being used at the moment! */
   /** DELETE: delete the blogentry from the server */
-  deleteBlogentry(blogentry: Blogentry | number): Observable<Blogentry> {
-    const id = typeof blogentry === 'number' ? blogentry : blogentry.id;
-    const url = `${this.serverUrl}/${id}`;
-
-    return this.http.delete<Blogentry>(url, this.httpOptions).pipe(
-      tap((_) => console.log(' Blogentry is deleted!')),
-      catchError(this.handleError<Blogentry>('deleteblogentry'))
-    );
-  }
+  // deleteBlogentry(blogentry: Blogentry | number): Observable<Blogentry> {
+  //   const id = typeof blogentry === 'number' ? blogentry : blogentry.id;
+  //   const url = `${this.serverUrl}/${id}`;
+  //   return this.http.delete<Blogentry>(url, this.httpOptions).pipe(
+  //     tap((_) => console.log(' Blogentry is deleted!')),
+  //     catchError(this.handleError<Blogentry>('deleteblogentry'))
+  //   );
+  // }
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
