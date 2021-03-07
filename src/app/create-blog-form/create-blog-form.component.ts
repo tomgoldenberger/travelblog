@@ -15,7 +15,6 @@ export class CreateBlogFormComponent implements OnInit {
   submitted = false;
   blog: Blogentry;
   blogs: Blogentry[];
-  // selectedFile = null; // For picture upload
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,7 +37,6 @@ export class CreateBlogFormComponent implements OnInit {
       destination: ['', Validators.required],
       description: ['', Validators.required],
       content: ['', Validators.required],
-      picture: [''],
     });
 
   }
@@ -62,9 +60,4 @@ export class CreateBlogFormComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-  /** TODO for picture upload */
-  // onFileSelected(event) {
-  //   this.blog = this.blogForm.value;
-  //   this.blog.picture = event.target.files[0];
-  // }
 }

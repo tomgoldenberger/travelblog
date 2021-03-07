@@ -25,7 +25,6 @@ class BlogRepo {
         const client = await this.getClient();
         let collection = this.getCollection(client);
         let result =  await collection.findOne({id: blogId});
-        console.log(blogId);
         return result
     }
 
