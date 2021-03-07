@@ -51,6 +51,11 @@ server.post('/login', (req, res) => {
     let mockedUsername = 'admin';
     let mockedPassword = 'password';
 
+    let repo = new BlogRepo();
+    yeet = repo.getUser(req.params.username).then(user => console.log(user.username))
+    .catch(err => console.log(err));
+
+
     if (username && password) {
       if (username === mockedUsername && password === mockedPassword) {
         let token = jwt.sign({username: username},
@@ -117,13 +122,6 @@ server.post('/register', (req, res) => {
        console.log(err); 
        res.sendStatus(500); 
      });
-});
-
-server.get('/users', (req, res) => {
-  let repo = new BlogRepo();
-  repo.getUser(req.params.username).then(user => res.send(user))
-  .catch(err => console.log(err));
-  console.log("show blog");
 });
 
 server.listen(4444, () => {

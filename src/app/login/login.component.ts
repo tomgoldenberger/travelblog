@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticateService } from '../authenticate.service';
 import { ContentService } from '../content.service';
+import { ReadVarExpr } from '@angular/compiler';
 
 
 @Component({
@@ -41,8 +42,12 @@ export class LoginComponent implements OnInit {
       res => {
         console.log("login");
         localStorage.setItem('token', res.token)
-        console.log(res.success);
-
+        if(res.success){
+          console.log(res.success);
+        }
+        else {
+          console.log("no");
+        }
       }
     );
   }    

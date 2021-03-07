@@ -60,11 +60,10 @@ class BlogRepo {
     }
 
 
-    async getUser(username) {
+    async getUser(name) {
         const client = await this.getClient();
         let collection = this.getCollectionUsers(client);
-        let result =  await collection.findOne({username: username});
-        console.log(username);
+        let result =  await collection.findOne({username: name});
         return result
     }
 }
