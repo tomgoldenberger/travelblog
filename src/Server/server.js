@@ -4,6 +4,8 @@ let jwt = require('jsonwebtoken');
 let config = require('./config');
 let middleware = require('./middleware');
 
+
+
 class HandlerGenerator {
   login (req, res) {
     let username = req.body.username;
@@ -46,6 +48,13 @@ class HandlerGenerator {
   }
 }
 
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}
+
 // Starting point of the server
 function main () {
   let app = express(); // Export app for other routes to use
@@ -59,6 +68,7 @@ function main () {
   app.post('/login', handlers.login);
   app.get('/', middleware.checkToken, handlers.index);
   app.listen(port, () => console.log(`Server is listening on port: ${port}`));
+ app.use(allowCrossDomain)
 }
 
 main();

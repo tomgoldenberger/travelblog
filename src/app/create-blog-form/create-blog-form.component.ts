@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Blogentry } from '../blogentry';
 import { ContentService } from '../content.service';
 import { Location } from '@angular/common';
+import { AuthenticateService } from '../authenticate.service';
 
 @Component({
   selector: 'app-create-blog-form',
@@ -19,10 +20,18 @@ export class CreateBlogFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private contentService: ContentService,
+    private authenticateservice: AuthenticateService,
     private location: Location
   ) {}
 
   ngOnInit(): void {
+    this.authenticateservice.check().subscribe(
+      res => {
+        console.log();
+      }
+    );
+
+
     this.blogForm = this.formBuilder.group({
       title: ['', Validators.required],
       date: ['', Validators.required],
@@ -31,6 +40,7 @@ export class CreateBlogFormComponent implements OnInit {
       content: ['', Validators.required],
       picture: [''],
     });
+
   }
 
   onSubmit(): void {

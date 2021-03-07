@@ -37,11 +37,22 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     const val = this.loginForm.value;
-    this.authenticateservice.login(val.username, val.password).subscribe(
-      () => {
+    this.authenticateservice.login(val.username, val.passwort).subscribe(
+      res => {
         console.log("login");
-        console.log(val.username);
+        localStorage.setItem('token', res.token)
+        console.log(res.success);
+
       }
     );
-  }          
+  }    
+  
+  onRegister(): void {
+    const val = this.loginForm.value;
+    this.authenticateservice.addUser(val.username, val.passwort).subscribe(
+      () => {
+        console.log("register");
+      }
+    );
+  } 
 }

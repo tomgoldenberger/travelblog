@@ -45,6 +45,7 @@ export class ContentService {
 
   /** POST: add a new blogentry to the server */
   addBlogentry(blogentry: Blogentry): Observable<Blogentry> {
+  
     return this.http
       .post<Blogentry>(this.serverUrl, blogentry, this.httpOptions)
       .pipe(

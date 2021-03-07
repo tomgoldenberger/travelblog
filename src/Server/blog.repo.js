@@ -1,6 +1,6 @@
 const uuid = require('uuid').v1;
 const mongo = require('mongodb').MongoClient
-const url = "ConnectionString";
+const url = "mongodb+srv://Goldi:Tominem10@cluster0.pbuhd.mongodb.net/GoldiDB?retryWrites=true&w=majority";
 
 class BlogRepo {
 
@@ -44,6 +44,29 @@ class BlogRepo {
         const db = client.db('travelblog');
         let collection = db.collection('blogs');
         return collection;
+    }
+    getCollectionUsers(client) {
+        const db = client.db('travelblog');
+        let collection = db.collection('users');
+        return collection;
+    }
+
+
+    async createUser(username, password) {
+        const client = await this.getClient();
+        let collection = this.getCollectionUsers(client);
+        let user = { username:username, password: password};
+        await collection.insertOne(user);
+        return user;
+    }
+
+
+    async getUser(username) {
+        const client = await this.getClient();
+        let collection = this.getCollectionUsers(client);
+        let result =  await collection.findOne({username: username});
+        console.log(username);
+        return result
     }
 }
 module.exports = BlogRepo; 
