@@ -26,7 +26,7 @@ export class CreateBlogFormComponent implements OnInit {
   ngOnInit(): void {
     this.authenticateservice.check().subscribe(
       res => {
-        console.log();
+        console.log(res.success);
       }
     );
 
