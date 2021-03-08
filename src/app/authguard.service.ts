@@ -12,13 +12,13 @@ export class AuthguardService implements CanActivate {
   canActivate(): boolean {
     this.authenticateservice.check().subscribe(
       res => {
-        if (!res.success) {
+        if (res.success = "false") {
           this.router.navigate(['login']);
           return false;
         }
         return true;
       })
     
-      return true;
+      return false;
   }  
 }

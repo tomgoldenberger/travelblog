@@ -50,14 +50,17 @@ server.post('/login', (req, res) => {
     // For the given username fetch user from DB
     let mockedUsername = 'admin';
     let mockedPassword = 'password';
+    var usernameDB 
+    var passwordDB 
 
     let repo = new BlogRepo();
-    yeet = repo.getUser(req.params.username).then(user => console.log(user.username))
+    check = repo.getUser(username, password).then (check => console.log(check))
     .catch(err => console.log(err));
 
+    console.log(check)
 
     if (username && password) {
-      if (username === mockedUsername && password === mockedPassword) {
+      if (username == usernameDB && password == passwordDB) {
         let token = jwt.sign({username: username},
           config.secret,
           { expiresIn: '24h' // expires in 24 hours
@@ -70,7 +73,7 @@ server.post('/login', (req, res) => {
           token: token
         });
       } else {
-        res.send(403).json({
+        res.json({
           success: false,
           message: 'Incorrect username or password'
         });

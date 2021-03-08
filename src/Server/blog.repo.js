@@ -60,11 +60,20 @@ class BlogRepo {
     }
 
 
-    async getUser(name) {
+    async getUser(name, password) {
         const client = await this.getClient();
         let collection = this.getCollectionUsers(client);
         let result =  await collection.findOne({username: name});
-        return result
+        console.log(result.username)
+        console.log(result.password)
+        if (name == result.username && password == result.password) {
+            console.log('ok')
+            return check = true
+        }
+        else {
+            console.log('nok')
+            return check = false
+        }
     }
 }
 module.exports = BlogRepo; 
