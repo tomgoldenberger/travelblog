@@ -44,23 +44,18 @@ server.get('/blogs/:id', (req, res) => {
     console.log("show blog");
 });
 
-server.post('/login', (req, res) => {
+ server.post('/login', async (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
-    // For the given username fetch user from DB
-    let mockedUsername = 'admin';
-    let mockedPassword = 'password';
-    var usernameDB 
-    var passwordDB 
-
+    
+    // Check if Account exists
     let repo = new BlogRepo();
-    check = repo.getUser(username, password).then (check => console.log(check))
-    .catch(err => console.log(err));
-
-    console.log(check)
+    let globalVariable = null;
+    await repo.getUser(username, password)
+      .then(result => { console.log('Result', result); globalVariable = result;})
 
     if (username && password) {
-      if (username == usernameDB && password == passwordDB) {
+      if (globalVariable) {
         let token = jwt.sign({username: username},
           config.secret,
           { expiresIn: '24h' // expires in 24 hours
@@ -86,7 +81,7 @@ server.post('/login', (req, res) => {
     }
 });
 
-server.get('/auth', (req, res, next) => {
+server.get('/auth', async(req, res) => {
   let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
 
   if (token) {

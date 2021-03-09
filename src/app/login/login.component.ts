@@ -41,12 +41,13 @@ export class LoginComponent implements OnInit {
     this.authenticateservice.login(val.username, val.passwort).subscribe(
       res => {
         console.log("login");
-        localStorage.setItem('token', res.token)
         if(res.success){
+          localStorage.setItem('token', res.token)
           console.log(res.success);
+          window.location.reload();
         }
         else {
-          console.log("no");
+          console.log(res.success);
         }
       }
     );

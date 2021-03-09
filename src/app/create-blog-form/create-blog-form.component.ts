@@ -24,13 +24,6 @@ export class CreateBlogFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.authenticateservice.check().subscribe(
-      res => {
-        console.log(res.success);
-      }
-    );
-
-
     this.blogForm = this.formBuilder.group({
       title: ['', Validators.required],
       date: ['', Validators.required],

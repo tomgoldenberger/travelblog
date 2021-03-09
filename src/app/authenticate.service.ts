@@ -23,7 +23,7 @@ export class AuthenticateService {
   }
 
   check() {
-    return this.http.get<any>('http://localhost:4444/auth', this.httpOptions)
+    return this.http.get<any>('http://localhost:4444/auth', this.httpOptions) 
   }  
 
   logout() {

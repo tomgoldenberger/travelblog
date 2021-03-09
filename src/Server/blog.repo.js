@@ -50,7 +50,6 @@ class BlogRepo {
         return collection;
     }
 
-
     async createUser(username, password) {
         const client = await this.getClient();
         let collection = this.getCollectionUsers(client);
@@ -59,21 +58,12 @@ class BlogRepo {
         return user;
     }
 
-
     async getUser(name, password) {
         const client = await this.getClient();
         let collection = this.getCollectionUsers(client);
-        let result =  await collection.findOne({username: name});
-        console.log(result.username)
-        console.log(result.password)
-        if (name == result.username && password == result.password) {
-            console.log('ok')
-            return check = true
-        }
-        else {
-            console.log('nok')
-            return check = false
-        }
+        try{let result =  await collection.findOne({username: name});  
+        return (name == result.username && password == result.password)}
+        catch(TypeError){return false}
     }
 }
 module.exports = BlogRepo; 
