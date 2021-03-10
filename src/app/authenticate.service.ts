@@ -16,24 +16,24 @@ export class AuthenticateService {
   constructor(
     private http: HttpClient,
     public router: Router
-    ) { }
+  ) { }
 
-  login(username, password){
+  login(username, password) {
     return this.http.post<any>('http://localhost:4444/login', { username: username, password: password })
   }
 
   check() {
-    return this.http.get<any>('http://localhost:4444/auth', this.httpOptions) 
-  }  
+    return this.http.get<any>('http://localhost:4444/auth', this.httpOptions)
+  }
 
   logout() {
     localStorage.removeItem('token')
   }
 
-  addUser(username:string, password:String){
+  addUser(username: string, password: String) {
     return this.http.post<Blogentry>('http://localhost:4444/register', { username: username, password: password })
   }
-  
+
   httpOptions = {
     headers: new HttpHeaders().append("Authorization", "Bearer " + localStorage.token),
   };

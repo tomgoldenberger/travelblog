@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private authenticateservice: AuthenticateService,
     private httpModule: HttpClientModule,
     private http: HttpClient
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -36,23 +36,24 @@ export class LoginComponent implements OnInit {
     this.location.back();
   }
 
+  //Login Button
   onSubmit(): void {
     const val = this.loginForm.value;
     this.authenticateservice.login(val.username, val.passwort).subscribe(
       res => {
-        console.log("login");
-        if(res.success){
+        if (res.success) {
           localStorage.setItem('token', res.token)
-          console.log(res.success);
           window.location.reload();
+          console.log("login erfolgreich");
         }
         else {
-          console.log(res.success);
+          console.log("login fehlgeschlagen");
         }
       }
     );
-  }    
-  
+  }
+
+  //register Button
   onRegister(): void {
     const val = this.loginForm.value;
     this.authenticateservice.addUser(val.username, val.passwort).subscribe(
@@ -60,5 +61,5 @@ export class LoginComponent implements OnInit {
         console.log("register");
       }
     );
-  } 
+  }
 }

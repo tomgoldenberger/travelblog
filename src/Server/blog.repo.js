@@ -16,7 +16,7 @@ class BlogRepo {
         const client = await this.getClient();
         let collection = this.getCollection(client);
         let blogID = uuid();
-        let blog = { id:blogID, title: title, destination: destination, description: description, date: date, content: content };
+        let blog = { id: blogID, title: title, destination: destination, description: description, date: date, content: content };
         await collection.insertOne(blog);
         return blog;
     }
@@ -24,7 +24,7 @@ class BlogRepo {
     async getBlog(blogId) {
         const client = await this.getClient();
         let collection = this.getCollection(client);
-        let result =  await collection.findOne({id: blogId});
+        let result = await collection.findOne({ id: blogId });
         return result
     }
 
@@ -35,7 +35,7 @@ class BlogRepo {
     async deleteBlog(blogId) {
         const client = await this.getClient();
         let collection = this.getCollection(client);
-        await collection.deleteOne({id: blogId});
+        await collection.deleteOne({ id: blogId });
         return true;
     }
 
@@ -53,7 +53,7 @@ class BlogRepo {
     async createUser(username, password) {
         const client = await this.getClient();
         let collection = this.getCollectionUsers(client);
-        let user = { username:username, password: password};
+        let user = { username: username, password: password };
         await collection.insertOne(user);
         return user;
     }
@@ -61,9 +61,11 @@ class BlogRepo {
     async getUser(name, password) {
         const client = await this.getClient();
         let collection = this.getCollectionUsers(client);
-        try{let result =  await collection.findOne({username: name});  
-        return (name == result.username && password == result.password)}
-        catch(TypeError){return false}
+        try {
+            let result = await collection.findOne({ username: name });
+            return (name == result.username && password == result.password)
+        }
+        catch (TypeError) { return false }
     }
 }
-module.exports = BlogRepo; 
+module.exports = BlogRepo;

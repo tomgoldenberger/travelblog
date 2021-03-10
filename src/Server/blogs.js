@@ -4,84 +4,84 @@ const server = express();
 let BlogRepo = require('./blog.repo');
 let jwt = require('jsonwebtoken');
 let config = require('./config');
-let middleware = require('./middleware');
 
-server.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
-    next();
-  });
+server.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
+  next();
+});
 
 let blogs = [];
 
 
 server.use(bodyParser.json())
-server.use(bodyParser.urlencoded({extended: true }))
+server.use(bodyParser.urlencoded({ extended: true }))
 
 server.get('/blogs', (req, res) => {
-    let repo = new BlogRepo();
-    repo.getBlogs().then(blogs => res.send(blogs))
+  let repo = new BlogRepo();
+  repo.getBlogs().then(blogs => res.send(blogs))
     .catch(err => console.log(err));
-    console.log("get all blogs");
+  console.log("get all blogs");
 });
 
-server.post('/blogs', (req, res) => {    
-    let repo = new BlogRepo();
-   
-    repo.createBlogentry(req.body.title, req.body.destination, req.body.description, req.body.date, req.body.content).then(blogs =>
-        res.send(blogs), console.log("new Blogpost added!"+ blogs.id)
-       )
-      .catch(err => { 
-         console.log(err); 
-         res.sendStatus(500); 
-       });
+server.post('/blogs', (req, res) => {
+  let repo = new BlogRepo();
+
+  repo.createBlogentry(req.body.title, req.body.destination, req.body.description, req.body.date, req.body.content).then(blogs =>
+    res.send(blogs), console.log("new Blogpost added!" + blogs.id)
+  )
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    });
 });
 
 server.get('/blogs/:id', (req, res) => {
-    let repo = new BlogRepo();
-    repo.getBlog(req.params.id).then(blog => res.send(blog))
+  let repo = new BlogRepo();
+  repo.getBlog(req.params.id).then(blog => res.send(blog))
     .catch(err => console.log(err));
-    console.log("show blog");
+  console.log("show blog");
 });
 
- server.post('/login', async (req, res) => {
-    let username = req.body.username;
-    let password = req.body.password;
-    
-    // Check if Account exists
-    let repo = new BlogRepo();
-    let globalVariable = null;
-    await repo.getUser(username, password)
-      .then(result => { console.log('Result', result); globalVariable = result;})
+server.post('/login', async (req, res) => {
+  let username = req.body.username;
+  let password = req.body.password;
+  let repo = new BlogRepo();
+  let check = null;
 
-    if (username && password) {
-      if (globalVariable) {
-        let token = jwt.sign({username: username},
-          config.secret,
-          { expiresIn: '24h' // expires in 24 hours
-          }
-        );
-        // return the JWT token for the future API calls
-        res.json({
-          success: true,
-          message: 'Authentication successful!',
-          token: token
-        });
-      } else {
-        res.json({
-          success: false,
-          message: 'Incorrect username or password'
-        });
-      }
+  // Check if Account exists
+  await repo.getUser(username, password)
+    .then(result => { console.log('Result', result); check = result; })
+
+  if (username && password) {
+    if (check) {
+      let token = jwt.sign({ username: username },
+        config.secret,
+        {
+          expiresIn: '24h' // expires in 24 hours
+        }
+      );
+      // return the JWT token for the future API calls
+      res.json({
+        success: true,
+        message: 'Authentication successful!',
+        token: token
+      });
     } else {
-      res.send(400).json({
+      res.json({
         success: false,
-        message: 'Authentication failed! Please check the request'
+        message: 'Incorrect username or password'
       });
     }
+  } else {
+    res.send(400).json({
+      success: false,
+      message: 'Authentication failed! Please check the request'
+    });
+  }
 });
 
-server.get('/auth', async(req, res) => {
+server.get('/auth', async (req, res) => {
   let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
 
   if (token) {
@@ -111,17 +111,16 @@ server.get('/auth', async(req, res) => {
   }
 });
 
-
-server.post('/register', (req, res) => {    
+server.post('/register', (req, res) => {
   let repo = new BlogRepo();
- 
+
   repo.createUser(req.body.username, req.body.password)
-    .catch(err => { 
-       console.log(err); 
-       res.sendStatus(500); 
-     });
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    });
 });
 
 server.listen(4444, () => {
-    console.log('a server with express is running on port 4444');
+  console.log('a server with express is running on port 4444');
 });
