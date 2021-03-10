@@ -28,7 +28,7 @@ server.post('/blogs', (req, res) => {
   let repo = new BlogRepo();
 
   repo.createBlogentry(req.body.title, req.body.destination, req.body.description, req.body.date, req.body.content).then(blogs =>
-    res.send(blogs), console.log("new Blogpost added!" + blogs.id)
+    res.send(blogs), console.log("new Blogpost added!")
   )
     .catch(err => {
       console.log(err);
